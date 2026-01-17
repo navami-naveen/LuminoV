@@ -11,7 +11,8 @@
 # ========================================
 
 # YOUR API KEY - PASTE IT HERE:
-$GROQ_API_KEY = "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"
+# Replace the placeholder below with your actual Groq API key (keep the quotes)
+$GROQ_API_KEY = "YOUR_API_KEY_HERE"
 
 # ========================================
 # Set as persistent environment variable
@@ -34,3 +35,33 @@ Write-Host "" -ForegroundColor Green
 Write-Host "You can now run: python TimeTravel_CareerAdvisor.py" -ForegroundColor Green
 Write-Host "" -ForegroundColor Green
 Write-Host "Note: You may need to restart your terminal/PowerShell for changes to take effect." -ForegroundColor Yellow
+
+# Also persist the key to a local .env file in this script directory so other tools
+# that read environment files (like dotenv) can pick it up.
+$envFile = Join-Path $PSScriptRoot ".env"
+
+try {
+    $lines = @()
+    if (Test-Path $envFile) {
+        $lines = Get-Content $envFile -ErrorAction Stop
+    }
+
+    $found = $false
+    for ($i = 0; $i -lt $lines.Count; $i++) {
+        if ($lines[$i] -match '^[ \t]*GROQ_API_KEY\s*=') {
+            $lines[$i] = "GROQ_API_KEY=$GROQ_API_KEY"
+            $found = $true
+            break
+        }
+    }
+
+    if (-not $found) {
+        $lines += "GROQ_API_KEY=$GROQ_API_KEY"
+    }
+
+    $lines | Set-Content -Path $envFile -Encoding UTF8
+    Write-Host "✅ Wrote GROQ_API_KEY to $envFile" -ForegroundColor Green
+}
+catch {
+    Write-Host "⚠️  Warning: Failed to write .env file: $_" -ForegroundColor Yellow
+}
