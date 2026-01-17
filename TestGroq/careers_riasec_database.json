@@ -1,0 +1,98 @@
+{
+  "Software Engineer": {
+    "realistic": 40,
+    "investigative": 60,
+    "artistic": 10,
+    "social": 20,
+    "enterprising": 30,
+    "conventional": 40
+  },
+  "Data Scientist": {
+    "realistic": 30,
+    "investigative": 80,
+    "artistic": 15,
+    "social": 25,
+    "enterprising": 35,
+    "conventional": 50
+  },
+  "Product Manager": {
+    "realistic": 35,
+    "investigative": 45,
+    "artistic": 25,
+    "social": 70,
+    "enterprising": 75,
+    "conventional": 55
+  },
+  "UX Designer": {
+    "realistic": 30,
+    "investigative": 40,
+    "artistic": 75,
+    "social": 60,
+    "enterprising": 55,
+    "conventional": 35
+  },
+  "Management Consultant": {
+    "realistic": 45,
+    "investigative": 60,
+    "artistic": 20,
+    "social": 75,
+    "enterprising": 80,
+    "conventional": 70
+  },
+  "Nurse": {
+    "realistic": 60,
+    "investigative": 55,
+    "artistic": 25,
+    "social": 85,
+    "enterprising": 40,
+    "conventional": 65
+  },
+  "Graphic Designer": {
+    "realistic": 40,
+    "investigative": 35,
+    "artistic": 90,
+    "social": 50,
+    "enterprising": 60,
+    "conventional": 45
+  },
+  "Business Analyst": {
+    "realistic": 50,
+    "investigative": 70,
+    "artistic": 20,
+    "social": 55,
+    "enterprising": 65,
+    "conventional": 75
+  },
+  "Cybersecurity Specialist": {
+    "realistic": 55,
+    "investigative": 75,
+    "artistic": 15,
+    "social": 30,
+    "enterprising": 45,
+    "conventional": 70
+  },
+  "Marketing Manager": {
+    "realistic": 35,
+    "investigative": 50,
+    "artistic": 60,
+    "social": 75,
+    "enterprising": 85,
+    "conventional": 60
+  },
+  "Mechanical Engineer": {
+    "realistic": 80,
+    "investigative": 70,
+    "artistic": 30,
+    "social": 30,
+    "enterprising": 50,
+    "conventional": 60
+  },
+  "Psychologist": {
+    "realistic": 40,
+    "investigative": 70,
+    "artistic": 35,
+    "social": 85,
+    "enterprising": 50,
+    "conventional": 55
+  }
+}

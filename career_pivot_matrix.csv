@@ -1,0 +1,73 @@
+Career_Path,Analytical,Creative,Technical,Social,Enterprising,Operational
+AI Engineer,0.95,0.70,1.00,0.30,0.50,0.60
+Data Scientist,0.95,0.50,0.90,0.40,0.50,0.70
+Full Stack Developer,0.80,0.60,0.95,0.40,0.40,0.70
+Cybersecurity Analyst,0.90,0.30,0.95,0.40,0.40,0.85
+Cloud Architect,0.85,0.50,0.95,0.50,0.60,0.80
+UX Designer,0.65,0.95,0.70,0.80,0.50,0.40
+Digital Marketer,0.60,0.85,0.50,0.90,0.95,0.60
+Product Manager,0.80,0.60,0.65,0.90,0.95,0.90
+Financial Analyst,0.95,0.20,0.70,0.50,0.80,0.85
+Investment Banker,0.90,0.20,0.60,0.70,1.00,0.90
+Chartered Accountant,0.90,0.10,0.50,0.50,0.70,1.00
+Management Consultant,0.95,0.50,0.40,0.90,0.95,0.80
+HR Manager,0.50,0.40,0.30,1.00,0.80,0.90
+Supply Chain Manager,0.75,0.30,0.50,0.60,0.80,1.00
+Civil Engineer,0.90,0.50,0.85,0.40,0.60,0.90
+Mechanical Engineer,0.90,0.50,0.90,0.30,0.50,0.85
+Robotics Engineer,0.95,0.70,0.95,0.30,0.60,0.70
+Architect,0.75,1.00,0.70,0.60,0.70,0.60
+Interior Designer,0.50,1.00,0.40,0.80,0.70,0.50
+Graphic Designer,0.40,1.00,0.70,0.50,0.50,0.30
+Content Writer,0.40,0.95,0.30,0.70,0.60,0.50
+Copywriter,0.50,1.00,0.20,0.70,0.90,0.40
+Video Editor,0.40,0.95,0.85,0.40,0.50,0.60
+Animator,0.30,1.00,0.90,0.30,0.40,0.50
+UI Developer,0.60,0.80,0.90,0.50,0.40,0.60
+Mobile App Developer,0.75,0.60,0.95,0.40,0.50,0.70
+Game Developer,0.80,0.90,0.95,0.40,0.50,0.60
+Blockchain Developer,0.90,0.50,1.00,0.30,0.60,0.70
+DevOps Engineer,0.85,0.40,0.95,0.50,0.40,1.00
+Network Engineer,0.80,0.20,0.90,0.40,0.30,0.90
+Database Administrator,0.85,0.20,0.90,0.30,0.30,0.95
+QA Automation Engineer,0.80,0.30,0.90,0.40,0.30,0.85
+Data Analyst,0.90,0.40,0.80,0.50,0.60,0.75
+Business Analyst,0.85,0.50,0.60,0.85,0.80,0.80
+Marketing Analytics Manager,0.90,0.60,0.75,0.70,0.85,0.75
+SEO Specialist,0.70,0.60,0.65,0.60,0.80,0.80
+Social Media Manager,0.50,0.90,0.40,0.95,0.85,0.60
+Public Relations Specialist,0.50,0.80,0.20,1.00,0.90,0.70
+Event Planner,0.40,0.85,0.20,0.95,0.85,1.00
+Sales Executive,0.40,0.50,0.20,0.95,1.00,0.70
+Real Estate Agent,0.50,0.40,0.20,0.95,1.00,0.80
+E-commerce Manager,0.70,0.60,0.60,0.70,0.95,0.90
+Operations Research Analyst,1.00,0.40,0.80,0.40,0.60,0.90
+Actuary,1.00,0.20,0.70,0.30,0.60,0.80
+Economist,1.00,0.50,0.60,0.60,0.70,0.70
+Psychologist,0.80,0.60,0.20,1.00,0.50,0.60
+Clinical Researcher,0.95,0.40,0.70,0.60,0.40,0.90
+Pharmacist,0.80,0.10,0.50,0.80,0.60,1.00
+Physiotherapist,0.60,0.40,0.30,1.00,0.50,0.80
+Hospital Administrator,0.65,0.30,0.40,0.90,0.85,1.00
+Lawyer,0.95,0.60,0.20,0.90,0.90,0.85
+Legal Analyst,0.95,0.30,0.40,0.50,0.60,0.90
+Journalist,0.60,0.90,0.30,0.90,0.70,0.60
+Photographer,0.30,1.00,0.60,0.70,0.70,0.40
+Fashion Stylist,0.30,1.00,0.20,0.85,0.75,0.50
+Chef de Cuisine,0.40,0.95,0.20,0.60,0.80,1.00
+Pilot,0.80,0.20,0.90,0.50,0.50,1.00
+Environmental Scientist,0.90,0.50,0.70,0.60,0.50,0.80
+Biotechnologist,0.95,0.60,0.90,0.40,0.50,0.80
+Geneticist,1.00,0.60,0.90,0.40,0.40,0.80
+Astrophysicist,1.00,0.70,0.95,0.30,0.30,0.60
+Geologist,0.85,0.40,0.75,0.40,0.40,0.90
+Marine Biologist,0.85,0.60,0.70,0.50,0.40,0.80
+Urban Planner,0.80,0.80,0.60,0.80,0.70,0.90
+Corporate Trainer,0.50,0.70,0.40,1.00,0.90,0.80
+School Principal,0.70,0.50,0.30,1.00,0.90,1.00
+Special Education Teacher,0.50,0.80,0.20,1.00,0.40,0.80
+Librarian,0.60,0.30,0.50,0.70,0.30,1.00
+Museum Curator,0.75,0.90,0.40,0.70,0.60,0.85
+Film Director,0.70,1.00,0.60,0.95,0.90,0.80
+Sound Engineer,0.50,0.85,0.95,0.50,0.50,0.70
+Stock Trader,0.95,0.30,0.60,0.40,1.

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LuminaV - Test Page</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 20px 0;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        .status {
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+
+        .success {
+            color: #4ade80;
+        }
+
+        .error {
+            color: #f87171;
+        }
+
+        button {
+            background: white;
+            color: #667eea;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 10px 5px;
+            transition: transform 0.2s;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        .info {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 10px;
+            margin: 10px 0;
+            font-family: monospace;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="card">
+        <h1>LuminaV Test Page</h1>
+        <p>This page tests the backend connectivity and features.</p>
+
+        <div id="status" class="status">⏳ Testing backend connection...</div>
+
+        <div class="info">
+            <strong>Backend URL:</strong> http://localhost:8000<br>
+            <strong>Expected Endpoints:</strong>
+            <ul>
+                <li>/api/questions</li>
+                <li>/api/evaluate</li>
+                <li>/api/all-careers</li>
+                <li>/api/future-persona</li>
+                <li>/api/future-chat</li>
+            </ul>
+        </div>
+
+        <button onclick="testBackend()">🔄 Test Backend</button>
+        <button onclick="testCareers()">📚 Test Careers API</button>
+        <button onclick="window.location.href='index.html'">🚀 Open Main App</button>
+
+        <div id="results" style="margin-top: 20px;"></div>
+    </div>
+
+    <script>
+        async function testBackend() {
+            const statusEl = document.getElementById('status');
+            const resultsEl = document.getElementById('results');
+
+            statusEl.innerHTML = '⏳ Testing backend...';
+            resultsEl.innerHTML = '';
+
+            try {
+                const response = await fetch('http://localhost:8000/api/questions');
+                if (response.ok) {
+                    const data = await response.json();
+                    statusEl.innerHTML = '<span class="success">✅ Backend is running!</span>';
+                    resultsEl.innerHTML = `<div class="info"><strong>Questions loaded:</strong> ${data.length} questions</div>`;
+                } else {
+                    statusEl.innerHTML = '<span class="error">❌ Backend returned error</span>';
+                }
+            } catch (error) {
+                statusEl.innerHTML = '<span class="error">❌ Backend not running</span>';
+                resultsEl.innerHTML = `<div class="info"><strong>Error:</strong> ${error.message}<br><br>
+                    <strong>To start backend:</strong><br>
+                    1. Open terminal in project folder<br>
+                    2. Run: <code>python backend/main.py</code><br>
+                    3. Or double-click: <code>start_backend.bat</code>
+                </div>`;
+            }
+        }
+
+        async function testCareers() {
+            const resultsEl = document.getElementById('results');
+            resultsEl.innerHTML = '⏳ Loading careers...';
+
+            try {
+                const response = await fetch('http://localhost:8000/api/all-careers');
+                if (response.ok) {
+                    const careers = await response.json();
+                    resultsEl.innerHTML = `<div class="info">
+                        <strong>✅ Careers loaded:</strong> ${careers.length} career options<br><br>
+                        <strong>Sample careers:</strong><br>
+                        ${careers.slice(0, 10).join('<br>')}
+                        <br>...(${careers.length - 10} more)
+                    </div>`;
+                } else {
+                    resultsEl.innerHTML = '<div class="info"><span class="error">❌ Failed to load careers</span></div>';
+                }
+            } catch (error) {
+                resultsEl.innerHTML = `<div class="info"><span class="error">❌ Error: ${error.message}</span></div>`;
+            }
+        }
+
+        // Auto-test on load
+        window.onload = testBackend;
+    </script>
+</body>
+
+</html>

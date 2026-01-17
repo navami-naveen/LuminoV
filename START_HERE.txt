@@ -1,0 +1,79 @@
+╔══════════════════════════════════════════════════════════════╗
+║                                                              ║
+║                  LUMINAV - QUICK START                       ║
+║                                                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+📋 STEP 1: INSTALL DEPENDENCIES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Open Command Prompt in this folder and run:
+
+    pip install --user fastapi uvicorn groq python-multipart
+
+
+🚀 STEP 2: START BACKEND SERVER
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Choose ONE of these options:
+
+  ✅ EASIEST: Double-click "start_backend.bat"
+
+  OR
+
+  ⚡ Run in Command Prompt:
+     python -m uvicorn backend.main:app --host 0.0.0.0 --port 8000
+
+
+🌐 STEP 3: OPEN APPLICATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  ✅ RECOMMENDED: Open "test.html" first to verify backend
+     Then open "index.html"
+
+  OR
+
+  ⚡ Direct: Double-click "index.html"
+
+
+🎯 FEATURES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+✅ RIASEC Personality Assessment (6 questions)
+✅ Personalized Career Recommendations (500+ options)
+✅ College Suggestions (60+ institutions)
+✅ Entrance Exam Information
+✅ AI Future Self Chat (Time Travel Feature)
+
+
+🔧 TROUBLESHOOTING
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+❌ Backend won't start?
+   → Check Python version: python --version (need 3.8+)
+   → Reinstall: pip install --user -r requirements.txt
+
+❌ Frontend can't connect?
+   → Open: http://localhost:8000/api/questions in browser
+   → Use test.html to diagnose
+
+❌ Port 8000 in use?
+   → Close other apps or change port in backend/main.py
+
+
+📚 DOCUMENTATION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📄 README.md              - Full setup guide
+📄 STATUS.md              - Current features & fixes
+📄 INTEGRATION_SUMMARY.md - Technical details
+
+
+🎉 READY TO GO!
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Just start the backend and open index.html!
+
+Questions? Check STATUS.md for detailed information.
+
+╚══════════════════════════════════════════════════════════════╝

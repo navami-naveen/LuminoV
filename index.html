@@ -1,0 +1,1379 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>LuminaV | Illuminating Career Pathways</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* --- MODERN LIGHT THEME --- */
+    :root {
+      /* Palette: Slate & Indigo */
+      --bg-deep: #f8fafc;
+      --bg-glass: rgba(255, 255, 255, 0.7);
+      --bg-card-solid: #ffffff;
+      --primary: #4f46e5;
+      /* Indigo 600 */
+      --primary-glow: rgba(79, 70, 229, 0.3);
+      --accent: #db2777;
+      /* Pink 600 */
+      --accent-glow: rgba(219, 39, 119, 0.3);
+      --text-main: #1e293b;
+      /* Slate 800 */
+      --text-muted: #64748b;
+      /* Slate 500 */
+      --border: rgba(0, 0, 0, 0.08);
+      --card-shadow: 0 10px 40px -10px rgba(0, 0, 0, 0.08);
+      --font-main: 'Outfit', sans-serif;
+      --font-main: 'Outfit', sans-serif;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: var(--font-main);
+      background-color: var(--bg-deep);
+      color: var(--text-main);
+      line-height: 1.6;
+      min-height: 100vh;
+      overflow-x: hidden;
+      /* Subtle warm/cool gradient for light mode */
+      background-image:
+        radial-gradient(circle at 10% 20%, rgba(79, 70, 229, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 90% 80%, rgba(219, 39, 119, 0.08) 0%, transparent 40%);
+      background-attachment: fixed;
+    }
+
+    /* Utilities */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    .fade-in {
+      animation: fadeIn 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Glass Card - Light Mode Edition */
+    .glass-card {
+      background: var(--bg-glass);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border);
+      border-radius: 1.5rem;
+      padding: 2.5rem;
+      box-shadow: var(--card-shadow);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      color: var(--text-main);
+    }
+
+    .glass-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.12);
+      border-color: rgba(79, 70, 229, 0.2);
+      background: rgba(255, 255, 255, 0.9);
+    }
+
+    /* Fix for buttons inside glass cards inheriting color */
+    button {
+      font-family: inherit;
+      color: inherit;
+    }
+
+    /* Typography */
+    h1,
+    h2,
+    h3 {
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, white 0%, var(--primary) 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* Interactive Elements */
+    .btn {
+      padding: 1rem 2.5rem;
+      border-radius: 50px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      font-size: 1rem;
+      border: none;
+      letter-spacing: 0.5px;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: white;
+      box-shadow: 0 10px 20px -10px var(--primary-glow);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 20px 30px -10px var(--primary-glow);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--border);
+      color: var(--text-main);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--primary);
+      background: rgba(99, 102, 241, 0.1);
+    }
+
+    /* Header - Light Version */
+    header {
+      padding: 1.5rem 0;
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+    }
+
+    header.scrolled {
+      padding: 0.8rem 0;
+      background: rgba(255, 255, 255, 0.95);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.75rem;
+      font-weight: 800;
+      color: var(--primary);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .logo img {
+      height: 40px;
+      width: 40px;
+      object-fit: cover;
+      border-radius: 8px;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+      gap: 2.5rem;
+    }
+
+    .nav-link {
+      position: relative;
+      color: var(--text-muted);
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.3s;
+      font-size: 0.95rem;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--primary);
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background: var(--accent);
+      transition: width 0.3s;
+    }
+
+    .nav-link.active::after {
+      width: 100%;
+    }
+
+    /* Pathways Visuals */
+    .step-icon {
+      width: 80px;
+      height: 80px;
+      margin: 0 auto 1.5rem;
+      border-radius: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    details {
+      margin-top: 1.5rem;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.5);
+      transition: all 0.3s ease;
+    }
+
+    details[open] {
+      background: white;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    }
+
+    summary {
+      padding: 1rem 1.5rem;
+      cursor: pointer;
+      font-weight: 700;
+      color: var(--primary);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      list-style: none;
+      /* Hide default arrow */
+      outline: none;
+    }
+
+    summary::-webkit-details-marker {
+      display: none;
+    }
+
+    summary::after {
+      content: '↓';
+      font-size: 1.2rem;
+      transition: transform 0.3s ease;
+    }
+
+    details[open] summary::after {
+      transform: rotate(180deg);
+    }
+
+    summary:hover {
+      background: rgba(79, 70, 229, 0.05);
+    }
+
+    /* Slider Styles */
+    .results-slider-wrapper {
+      position: relative;
+      width: 100%;
+      margin: 2rem 0;
+    }
+
+    .results-slider {
+      display: flex;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      gap: 2rem;
+      padding: 1rem 0;
+      scrollbar-width: none;
+      /* Firefox */
+      -ms-overflow-style: none;
+      /* IE/Edge */
+      scroll-behavior: smooth;
+    }
+
+    .results-slider::-webkit-scrollbar {
+      display: none;
+      /* Chrome/Safari */
+    }
+
+    .recommendation-slide {
+      flex: 0 0 100%;
+      scroll-snap-align: center;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .slider-nav {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-top: 2rem;
+      align-items: center;
+    }
+
+    .slider-btn {
+      background: var(--primary);
+      color: white;
+      border: none;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 10px 20px -5px var(--primary-glow);
+    }
+
+    .slider-btn:hover {
+      background: var(--accent);
+      transform: translateY(-3px) scale(1.1);
+      box-shadow: 0 15px 30px -5px var(--accent-glow);
+    }
+
+    .slider-btn:active {
+      transform: translateY(0) scale(0.95);
+    }
+
+    .slider-dots {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--border);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .dot.active {
+      background: var(--primary);
+      width: 25px;
+      border-radius: 5px;
+    }
+
+    /* Loader */
+    .loader {
+      width: 48px;
+      height: 48px;
+      border: 5px solid var(--primary);
+      border-bottom-color: transparent;
+      border-radius: 50%;
+      display: inline-block;
+      box-sizing: border-box;
+      animation: rotation 1s linear infinite;
+      margin-bottom: 1rem;
+    }
+
+    @keyframes rotation {
+      0% {
+        transform: rotate(0deg);
+      }
+
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="container nav">
+      <div class="logo" onclick="app.showPage('home')">
+        <img src="logo.jpg" alt="LuminaV Logo">
+        <span>LuminaV</span>
+      </div>
+      <nav>
+        <ul class="nav-links">
+          <li><a class="nav-link active" id="nav-home" onclick="app.showPage('home')">Home</a></li>
+          <li><a class="nav-link" id="nav-assessment" onclick="app.showPage('assessment')">Assessment</a></li>
+          <li><a class="nav-link" id="nav-dictionary" onclick="app.showPage('dictionary')">Degree Dictionary</a></li>
+          <li><a class="nav-link" id="nav-pivot" onclick="app.showPage('pivot')">Career Pivot</a></li>
+          <li><a class="nav-link" id="nav-chatbot" onclick="app.showPage('chatbot')">Talk with Your Future Self</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main-content" style="padding-top: 80px;">
+    <!-- 1. HOME PAGE -->
+    <section id="page-home">
+      <div class="container" style="text-align: center; padding-top: 4rem;">
+        <h1 style="font-size: 4rem; margin-bottom: 1rem;">Discover Your <br><span style="color: var(--primary);">True
+            Potential</span></h1>
+        <p style="font-size: 1.25rem; color: var(--text-muted); margin-bottom: 3rem;">AI-driven career guidance for
+          students after Class 10 & 12.</p>
+        <button class="btn btn-primary" onclick="app.showPage('assessment')">Start Assessment</button>
+        <div style="margin-top: 4rem; display: flex; gap: 2rem; justify-content: center;">
+          <div class="glass-card">
+            <h3>🎯 Precision</h3>
+            <p style="color: var(--text-muted);">RIASEC Data Model</p>
+          </div>
+          <div class="glass-card">
+            <h3>🚀 Future</h3>
+            <p style="color: var(--text-muted);">Trending Careers</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. DICTIONARY PAGE -->
+    <section id="page-dictionary" class="hidden">
+      <div class="container fade-in" style="max-width: 900px; padding-top: 2rem;">
+        <div class="glass-card" style="text-align: center; margin-bottom: 2rem;">
+          <h1 style="font-size: 2.5rem; margin-bottom: 1rem;">Degree <span
+              style="color: var(--primary);">Dictionary</span></h1>
+          <p style="color: var(--text-muted); margin-bottom: 2rem;">Search any degree or career to understand its
+            technical jargon in simple terms.</p>
+
+          <div style="position: relative; max-width: 600px; margin: 0 auto;">
+            <input type="text" id="dictionary-search" placeholder="Search (e.g. B.Tech, AI, Nursing...)"
+              style="width: 100%; padding: 1.2rem 2rem; border-radius: 50px; border: 1px solid var(--border); font-size: 1.1rem; outline: none; box-shadow: var(--card-shadow);"
+              onkeyup="if(event.key === 'Enter') app.searchDegree()">
+            <button class="btn btn-primary" onclick="app.searchDegree()"
+              style="position: absolute; right: 8px; top: 8px; padding: 0.8rem 2rem;">Search</button>
+          </div>
+        </div>
+
+        <div id="dictionary-results" class="fade-in">
+          <!-- Results will be injected here -->
+          <div style="text-align: center; color: var(--text-muted); padding: 4rem;">
+            <div style="font-size: 4rem; opacity: 0.2; margin-bottom: 1rem;">🔍</div>
+            <p>Your search results will appear here...</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. CAREER PIVOT PAGE -->
+    <section id="page-pivot" class="hidden">
+      <div class="container fade-in" style="max-width: 1000px; padding-top: 2rem;">
+        <div class="glass-card" style="margin-bottom: 2rem; text-align: center;">
+          <h1 style="font-size: 2.5rem; margin-bottom: 1rem;">Career <span style="color: var(--primary);">Pivot</span>
+            Analysis</h1>
+          <p style="color: var(--text-muted); margin-bottom: 2rem;">Analyze the gap between your current RIASEC profile
+            and your dream career.</p>
+
+          <div id="pivot-setup" style="max-width: 600px; margin: 0 auto; text-align: left;">
+            <label style="display: block; margin-bottom: 0.8rem; font-weight: 600;">Select Target Career:</label>
+            <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
+              <select id="pivot-target-select"
+                style="flex: 1; padding: 1rem; border-radius: 12px; border: 1px solid var(--border); outline: none; min-width: 250px;">
+                <option value="">-- Choose a career --</option>
+              </select>
+              <button class="btn btn-primary" onclick="app.calculatePivot()">Analyze Pivot</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="pivot-results" class="hidden">
+          <div class="glass-card" style="margin-bottom: 2rem; background: var(--bg-deep);">
+            <h2 id="pivot-title" style="margin-bottom: 1.5rem;">Target: Digital Marketer</h2>
+            <div id="pivot-grid"
+              style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;">
+              <!-- Pivot cards injected here -->
+            </div>
+          </div>
+        </div>
+
+        <div id="pivot-empty-state" style="text-align: center; color: var(--text-muted); padding: 4rem;">
+          <div style="font-size: 4rem; opacity: 0.2; margin-bottom: 1rem;">🎯</div>
+          <p>Please complete the assessment first to see your current profile, then select a target career above.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. CHATBOT PAGE -->
+    <section id="page-chatbot" class="hidden">
+      <div class="container fade-in" style="max-width: 1000px; padding-top: 2rem;">
+        <div id="chatbot-career-selection" class="glass-card" style="margin-bottom: 2rem; text-align: center;">
+          <h1 style="font-size: 2.5rem; margin-bottom: 1rem;">Talk with Your <span style="color: var(--primary);">Future Self</span></h1>
+          <p style="color: var(--text-muted); margin-bottom: 2rem;">Select a career to chat with your future self from that profession. Get insights, advice, and wisdom from your 5, 10, or 20 years ahead.</p>
+          
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-bottom: 2rem;" id="career-buttons-container">
+            <!-- Career buttons will be populated here -->
+            <div style="text-align: center; color: var(--text-muted); padding: 2rem; grid-column: 1 / -1;">
+              <div style="font-size: 2rem; opacity: 0.2; margin-bottom: 1rem;">⏳</div>
+              <p>Loading available careers...</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Chat Interface -->
+        <div id="chatbot-interface" class="hidden">
+          <div class="glass-card" style="display: flex; flex-direction: column; height: 600px; border: 1px solid var(--border);">
+            <div style="padding: 1.5rem; border-bottom: 1px solid var(--border); background: rgba(0,0,0,0.02);">
+              <div style="display: flex; justify-content: space-between; align-items: center;">
+                <div>
+                  <h2 id="chat-career-title" style="margin: 0; font-size: 1.5rem;"></h2>
+                  <p id="chat-career-subtitle" style="margin: 0.5rem 0 0 0; color: var(--text-muted); font-size: 0.9rem;"></p>
+                </div>
+                <button class="btn btn-outline" onclick="app.backToCareers()" style="padding: 0.6rem 1.2rem; font-size: 0.9rem;">← Back</button>
+              </div>
+            </div>
+
+            <div id="chat-messages" style="flex: 1; overflow-y: auto; padding: 1.5rem; display: flex; flex-direction: column; gap: 1rem; background: rgba(0,0,0,0.01);">
+              <!-- Messages will be populated here -->
+            </div>
+
+            <div style="padding: 1.5rem; border-top: 1px solid var(--border); background: var(--bg-card-solid);">
+              <div style="display: flex; gap: 1rem;">
+                <input type="text" id="chat-input" placeholder="Type your question or message..." 
+                  style="flex: 1; padding: 1rem; border-radius: 12px; border: 1px solid var(--border); font-family: inherit; font-size: 1rem; outline: none;"
+                  onkeypress="if(event.key === 'Enter') app.sendChatMessage()">
+                <button class="btn btn-primary" onclick="app.sendChatMessage()" style="padding: 0 2rem;">Send</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- 2. ASSESSMENT PAGE -->
+    <section id="page-assessment" class="hidden">
+      <div id="assessment-container-width" class="container" style="max-width: 800px; transition: all 0.5s ease;">
+        <!-- New Profile Section -->
+        <div id="profile-container" class="glass-card fade-in">
+          <h2 style="margin-bottom: 2rem; text-align: center;">Academic Profile</h2>
+          <p style="color: var(--text-muted); text-align: center; margin-bottom: 2rem;">Help us tailor your results by
+            providing your academic details.</p>
+          <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+            <div>
+              <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Current Stream / Class</label>
+              <select id="user-stream"
+                style="width: 100%; padding: 1rem; border-radius: 12px; border: 1px solid var(--border); background: white; font-family: inherit; font-size: 1rem; outline: none; transition: border-color 0.3s;">
+                <option value="Science (PCM)">Science (PCM)</option>
+                <option value="Science (PCB)">Science (PCB)</option>
+                <option value="Commerce">Commerce</option>
+                <option value="Arts/Humanities">Arts/Humanities</option>
+                <option value="Class 10">Class 10th</option>
+              </select>
+            </div>
+            <div>
+              <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Current Year's Mark (%)</label>
+              <input type="number" id="user-marks" placeholder="Enter percentage (e.g. 85)" min="0" max="100"
+                style="width: 100%; padding: 1rem; border-radius: 12px; border: 1px solid var(--border); background: white; font-family: inherit; font-size: 1rem; outline: none; transition: border-color 0.3s;">
+            </div>
+            <button class="btn btn-primary" onclick="app.validateProfile()" style="margin-top: 1rem;">Start
+              Assessment</button>
+          </div>
+        </div>
+
+        <!-- Quiz Section -->
+        <div id="quiz-container" class="hidden">
+          <div style="margin-bottom: 2rem;">
+            <span id="quiz-progress">Question 1 of 6</span>
+            <div
+              style="height: 4px; background: rgba(0,0,0,0.05); margin-top: 0.5rem; border-radius: 10px; overflow: hidden;">
+              <div id="progress-bar"
+                style="height: 100%; width: 0%; background: var(--primary); transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);">
+              </div>
+            </div>
+          </div>
+          <div class="glass-card">
+            <h2 id="question-text" style="font-size: 1.5rem; margin-bottom: 2rem;">Question Text</h2>
+            <div id="options-container" style="display: flex; flex-direction: column; gap: 1rem;"></div>
+          </div>
+        </div>
+
+        <!-- Results Section -->
+        <div id="result-container" class="hidden" style="text-align: center;">
+          <div class="glass-card" style="margin-bottom: 2rem;">
+            <div
+              style="display: inline-block; padding: 0.5rem 1rem; background: rgba(79, 70, 229, 0.1); border-radius: 50px; color: var(--primary); font-weight: 600; font-size: 0.9rem; margin-bottom: 1rem;">
+              <span id="result-profile-summary"></span>
+            </div>
+            <h2 style="font-size: 2.5rem;">Your Profile: <span id="result-title" style="color: var(--primary);"></span>
+            </h2>
+            <div id="result-desc"></div>
+          </div>
+
+          <div id="result-careers" style="margin: 2rem 0;"></div>
+
+          <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 3rem;">
+            <button class="btn btn-primary" onclick="app.downloadResult()">Download Report</button>
+            <button class="btn btn-outline" onclick="app.showPage('assessment')">Retake Assessment</button>
+          </div>
+        </div>
+      </div>
+
+
+
+  </main>
+
+  <!-- SCRIPT -->
+  <script>
+    const app = {
+      state: {
+        currentQ: 0,
+        questions: [],
+        answers: [],
+        tags: [],
+        stream: '',
+        marks: '',
+        lastResult: null
+      },
+
+      init: async function () {
+        try {
+          const resp = await fetch('http://localhost:8000/api/questions');
+          this.state.questions = await resp.json();
+          this.loadPivotCareers(); // Preload pivot list
+        } catch (e) {
+          console.error("Backend not found, using fallback question", e);
+          this.state.questions = [{ text: "1. Which activity makes time fly for you?", opts: [{ l: "Building/Repairing", t: "R" }, { l: "Solving Puzzles/Math", t: "I" }, { l: "Writing/Art", t: "A" }, { l: "Helping people", t: "S" }] }];
+        }
+
+        this.showPage('home');
+      },
+
+
+      // --- PAGE NAVIGATION ---
+      showPage: function (pageId) {
+        try {
+          document.querySelectorAll('section').forEach(el => el.classList.add('hidden'));
+
+          const target = document.getElementById('page-' + pageId);
+          if (target) {
+            target.classList.remove('hidden');
+            if (['home', 'assessment', 'dictionary', 'pivot', 'chatbot'].includes(pageId)) {
+              target.style.display = 'block';
+            }
+          } else {
+            console.error("Target section not found:", pageId);
+            return;
+          }
+
+          document.querySelectorAll('.nav-link').forEach(el => el.classList.remove('active'));
+          const activeLink = document.getElementById('nav-' + pageId);
+          if (activeLink) activeLink.classList.add('active');
+
+          if (pageId === 'assessment') {
+            document.getElementById('assessment-container-width').style.maxWidth = '800px';
+            document.getElementById('profile-container').classList.remove('hidden');
+            document.getElementById('quiz-container').classList.add('hidden');
+            document.getElementById('result-container').classList.add('hidden');
+          }
+
+          if (pageId === 'pivot') {
+            this.loadPivotCareers();
+          }
+
+          if (pageId === 'chatbot') {
+            this.loadCareersForChatbot();
+          }
+        } catch (e) {
+          console.error("Navigation Error:", e);
+        }
+      },
+
+      validateProfile: function () {
+        this.state.stream = document.getElementById('user-stream').value;
+        this.state.marks = document.getElementById('user-marks').value;
+
+        if (!this.state.marks || this.state.marks < 0 || this.state.marks > 100) {
+          alert("Please enter a valid percentage between 0 and 100.");
+          return;
+        }
+
+        document.getElementById('profile-container').classList.add('hidden');
+        this.startQuiz();
+      },
+
+      // --- QUIZ LOGIC ---
+      startQuiz: function () {
+        this.state.currentQ = 0;
+        this.state.answers = [];
+        this.state.tags = [];
+        document.getElementById('quiz-container').classList.remove('hidden');
+        document.getElementById('result-container').classList.add('hidden');
+        this.renderQuestion();
+      },
+
+      renderQuestion: function () {
+        if (!this.state.questions.length) return;
+        const q = this.state.questions[this.state.currentQ];
+        // Determine question count dynamically or use fixed length if robust
+        const total = this.state.questions.length;
+
+        document.getElementById('question-text').innerText = q.text;
+        const progressTxt = document.getElementById('quiz-progress');
+        if (progressTxt) progressTxt.innerText = `Question ${this.state.currentQ + 1} of ${total}`;
+
+        const bar = document.getElementById('progress-bar');
+        if (bar) bar.style.width = ((this.state.currentQ / total) * 100) + '%';
+
+        const container = document.getElementById('options-container');
+        container.innerHTML = '';
+        q.opts.forEach(opt => {
+          const btn = document.createElement('button');
+          btn.className = 'glass-card';
+          btn.style.textAlign = 'left';
+          btn.style.cursor = 'pointer';
+          btn.style.padding = '1.2rem';
+          btn.style.marginBottom = '0.5rem';
+
+          // Clean logic for label display
+          btn.innerHTML = `${opt.l} <span style="float:right; opacity:0.5;">→</span>`;
+
+          btn.onclick = () => this.handleAnswer(opt);
+          container.appendChild(btn);
+        });
+      },
+
+      handleAnswer: function (opt) {
+        if (opt.t) this.state.answers.push(opt.t);
+        if (opt.tag) this.state.tags.push(opt.tag);
+
+        this.state.currentQ++;
+        if (this.state.currentQ < this.state.questions.length) {
+          this.renderQuestion();
+        } else {
+          this.showResults();
+        }
+      },
+
+      // --- SLIDER NAVIGATION ---
+      currentSlide: 0,
+      slideNext: function () {
+        if (this.currentSlide < this.state.lastResult.combined_recommendations.length) {
+          this.currentSlide++;
+          this.updateSlider();
+        }
+      },
+      slidePrev: function () {
+        if (this.currentSlide > 0) {
+          this.currentSlide--;
+          this.updateSlider();
+        }
+      },
+      updateSlider: function () {
+        const slider = document.getElementById('results-slider');
+        if (!slider) return;
+        const slides = slider.querySelectorAll('.recommendation-slide');
+        if (slides[this.currentSlide]) {
+          const targetX = slides[this.currentSlide].offsetLeft;
+          slider.scrollTo({ left: targetX, behavior: 'smooth' });
+        }
+
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        if (prevBtn && nextBtn) {
+          prevBtn.style.opacity = this.currentSlide === 0 ? '0.3' : '1';
+          prevBtn.style.pointerEvents = this.currentSlide === 0 ? 'none' : 'auto';
+
+          const isLast = this.currentSlide === slides.length - 1;
+          nextBtn.style.opacity = isLast ? '0.3' : '1';
+          nextBtn.style.pointerEvents = isLast ? 'none' : 'auto';
+        }
+
+        document.querySelectorAll('.dot').forEach((dot, idx) => {
+          dot.classList.toggle('active', idx === this.currentSlide);
+        });
+      },
+
+      // --- CHAT LOGIC ---
+
+
+      showResults: async function () {
+        this.currentSlide = 0;
+        document.getElementById('assessment-container-width').style.maxWidth = '1200px';
+        document.getElementById('quiz-container').classList.add('hidden');
+        document.getElementById('result-container').classList.remove('hidden');
+        const container = document.getElementById('result-careers');
+        container.innerHTML = '<div style="text-align:center; padding:3rem;">Evaluating your profile...</div>';
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        try {
+          const resp = await fetch('http://localhost:8000/api/evaluate', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              answers: this.state.answers,
+              tags: this.state.tags,
+              stream: this.state.stream,
+              marks: parseFloat(this.state.marks)
+            })
+          });
+          const data = await resp.json();
+          this.state.lastResult = data;
+
+          const traitNames = {
+            'R': 'Realistic', 'I': 'Investigative', 'A': 'Artistic',
+            'S': 'Social', 'E': 'Enterprising', 'C': 'Conventional'
+          };
+
+          document.getElementById('result-title').innerText = data.title;
+          document.getElementById('result-desc').innerHTML = `
+            <div style="display: grid; grid-template-columns: 1fr 300px; gap: 2rem; text-align: left; margin-bottom: 2rem; flex-wrap: wrap;">
+              <div>
+                <div style="font-size: 1.1rem; margin-bottom: 1.5rem;">
+                  <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                    <div style="flex: 1; height: 12px; background: rgba(0,0,0,0.05); border-radius: 6px; overflow: hidden; border: 1px solid var(--border);">
+                      <div style="width: ${data.match_percentage}%; height: 100%; background: linear-gradient(90deg, var(--primary), var(--accent)); transition: width 1s ease-out;"></div>
+                    </div>
+                    <span style="font-weight: 800; color: var(--primary); font-size: 1.4rem;">${data.match_percentage}% Match</span>
+                  </div>
+                  <strong>Core Style:</strong> ${data.traits_desc}<br>
+                  <em>"Values identified: ${data.values.join(', ')}"</em>
+                </div>
+              </div>
+              <div class="glass-card" style="padding: 1.5rem; border-radius: 1rem; background: rgba(0,0,0,0.02);">
+                <h4 style="margin-bottom: 1rem; font-size: 1rem; opacity: 0.8;">Trait Breakdown</h4>
+                <div style="display: flex; flex-direction: column; gap: 0.8rem;">
+                  ${Object.entries(data.percentages).map(([trait, percent]) => `
+                    <div>
+                      <div style="display: flex; justify-content: space-between; font-size: 0.85rem; margin-bottom: 0.3rem;">
+                        <span style="font-weight: 600;">${traitNames[trait] || trait}</span>
+                        <span>${percent}%</span>
+                      </div>
+                      <div style="height: 6px; background: rgba(0,0,0,0.05); border-radius: 3px; overflow: hidden;">
+                        <div style="width: ${percent}%; height: 100%; background: ${trait === data.trait ? 'var(--primary)' : 'var(--text-muted)'}; opacity: ${trait === data.trait ? 1 : 0.4}; transition: width 1s ease-out;"></div>
+                      </div>
+                    </div>
+                  `).join('')}
+                </div>
+              </div>
+            </div>`;
+
+          let slidesHtml = data.combined_recommendations.map((rec, slideIdx) => `
+            <div class="recommendation-slide">
+              <div class="glass-card" style="padding: 2.5rem; border-left: 8px solid var(--primary); height: 100%;">
+                <div style="margin-bottom: 2rem;">
+                  <span style="background: var(--primary); color: white; padding: 0.4rem 1rem; border-radius: 50px; font-size: 0.8rem; font-weight: 700; margin-bottom: 1rem; display: inline-block;">PATHWAY ${slideIdx + 1}</span>
+                  <h3 style="color: var(--primary); font-size: 2rem; margin: 0;">🎓 ${rec.course}</h3>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem;">
+                  <div>
+                    <h4 style="margin-bottom: 1.2rem; color: var(--text-main); display: flex; align-items: center; gap: 0.5rem;">🏛️ Recommended Colleges</h4>
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                      ${rec.colleges.map(c => `
+                        <div style="background: rgba(0,0,0,0.03); padding: 1.2rem; border-radius: 15px; border: 1px solid var(--border); transition: 0.3s; position: relative;">
+                          <div style="font-weight: 700; font-size: 1rem;">${c.name}</div>
+                          <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.8rem;">${c.loc} • <span style="color: var(--primary);">${c.cutoff}</span></div>
+                          <a href="${c.url}" target="_blank" style="font-size: 0.8rem; color: var(--primary); text-decoration: none; display: flex; align-items: center; gap: 0.4rem; font-weight: 700;">
+                            🌐 Visit Official Site ↗
+                          </a>
+                        </div>
+                      `).join('')}
+                    </div>
+                  </div>
+
+                  <div>
+                    <h4 style="margin-bottom: 1.2rem; color: var(--text-main); display: flex; align-items: center; gap: 0.5rem;">💼 Potential Careers</h4>
+                    <ul style="list-style: none; padding: 0;">
+                      ${rec.careers.map(car => `
+                        <li style="margin-bottom: 0.8rem; padding: 0.8rem 1.2rem; background: var(--chat-bg-bot); border-radius: 12px; font-size: 0.95rem; border-left: 4px solid var(--accent); font-weight: 500;">
+                           ${car}
+                        </li>
+                      `).join('')}
+                    </ul>
+                  </div>
+
+                  <div>
+                    <h4 style="margin-bottom: 1.2rem; color: var(--text-main); display: flex; align-items: center; gap: 0.5rem;">📝 Target Entrance Exams</h4>
+                    <div style="display: flex; flex-direction: column; gap: 1rem;">
+                      ${rec.related_exams.map(e => `
+                        <div style="background: linear-gradient(135deg, rgba(16, 185, 129, 0.03), rgba(16, 185, 129, 0.08)); padding: 1.2rem; border-radius: 15px; border: 1px solid rgba(16, 185, 129, 0.1);">
+                          <div style="font-weight: 700; font-size: 1rem; color: #065f46; margin-bottom: 0.5rem;">${e.name}</div>
+                          <div style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 0.3rem;">
+                            <span style="color: var(--text-muted);">Registration:</span>
+                            <span style="font-weight: 600; color: #059669;">${e.reg}</span>
+                          </div>
+                          <div style="display: flex; justify-content: space-between; font-size: 0.8rem;">
+                            <span style="color: var(--text-muted);">Exam:</span>
+                            <span style="font-weight: 600; color: #d97706;">${e.exam}</span>
+                          </div>
+                        </div>
+                      `).join('')}
+                    </div>
+                  </div>
+                </div>
+
+                <details style="margin-top: 2.5rem; border: 2px solid var(--border);">
+                  <summary style="padding: 1.2rem;">Complete Skill & Tech Roadmap</summary>
+                  <div style="padding: 2rem; background: #fafafa;">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                      <div>
+                        <h5 style="margin-bottom: 1rem; font-size: 1.1rem;">🏗️ Essential Skills</h5>
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.6rem;">
+                          ${rec.skills.map(s => `<span style="background: white; padding: 0.5rem 1rem; border-radius: 8px; font-size: 0.9rem; font-weight: 600; border: 1px solid var(--border);">${s}</span>`).join('')}
+                        </div>
+                      </div>
+                      <div>
+                        <h5 style="margin-bottom: 1rem; font-size: 1.1rem;">🚀 Emerging Frontier</h5>
+                        <div style="display: flex; flex-wrap: wrap; gap: 0.6rem;">
+                          ${rec.tech.map(t => `<span style="background: white; padding: 0.5rem 1rem; border-radius: 8px; font-size: 0.9rem; font-weight: 600; border: 1px solid var(--border); border-color: var(--accent); color: var(--accent);">${t}</span>`).join('')}
+                        </div>
+                      </div>
+                    </div>
+                    <div style="margin-top: 2rem;">
+                      <h5 style="margin-bottom: 1.2rem; font-size: 1.1rem;">📚 Recommended Learning</h5>
+                      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
+                        ${rec.sources.map(src => `
+                          <a href="${src.url}" target="_blank" style="text-decoration: none; color: inherit; display: flex; align-items: center; gap: 1rem; background: white; padding: 1rem; border-radius: 12px; border: 1px solid var(--border); transition: 0.3s;">
+                            <span style="font-size: 1.5rem;">📖</span>
+                            <div>
+                              <div style="font-weight: 700; font-size: 0.95rem; color: var(--primary);">${src.name}</div>
+                              <div style="font-size: 0.8rem; color: var(--text-muted);">Launch Course ↗</div>
+                            </div>
+                          </a>
+                        `).join('')}
+                      </div>
+                    </div>
+                  </div>
+                </details>
+              </div>
+            </div>
+          `).join('');
+
+          // Append Final Slide
+          slidesHtml += `
+            <div class="recommendation-slide">
+              <div class="glass-card" style="text-align: center; background: linear-gradient(135deg, var(--primary), var(--accent)); color: white; border-radius: 24px; padding: 4rem 2.5rem; box-shadow: 0 15px 45px -10px rgba(79, 70, 229, 0.4); height: 100%;">
+                <div style="font-size: 5rem; margin-bottom: 1.5rem;">🎓</div>
+                <h3 style="font-size: 2.5rem; margin-bottom: 1rem;">You've Found Your Path!</h3>
+                <p style="font-size: 1.2rem; opacity: 0.9; margin-bottom: 3rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+                  We've suggested the best courses and colleges based on your profile. 
+                  Download your full personalized report for a permanent record of your roadmap.
+                </p>
+                <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
+                  <button class="btn" onclick="app.downloadResult()" style="background: white; color: var(--primary); padding: 1.2rem 3rem;">Download Report</button>
+                  <button class="btn" onclick="app.showPage('home')" style="background: rgba(255,255,255,0.2); color: white; border: 1px solid white;">Back to Home</button>
+                </div>
+              </div>
+            </div>`;
+
+          const dotsHtml = [...data.combined_recommendations, "end"].map((_, idx) => `
+            <div class="dot ${idx === 0 ? 'active' : ''}" onclick="app.currentSlide = ${idx}; app.updateSlider();"></div>
+          `).join('');
+
+          container.innerHTML = `
+            <div style="margin-top: 2rem;">
+              <h3 style="margin-bottom: 1rem; text-align: left; font-size: 1.8rem;">🚀 Personalized Career Roadmaps</h3>
+              <p style="color: var(--text-muted); text-align: left; margin-bottom: 2rem;">Explore each path and swipe or use buttons to see more options.</p>
+              
+              <div class="results-slider-wrapper">
+                <div id="results-slider" class="results-slider">
+                  ${slidesHtml}
+                </div>
+              </div>
+
+              <div class="slider-nav">
+                <button id="prevBtn" class="slider-btn" onclick="app.slidePrev()">←</button>
+                <div class="slider-dots">
+                  ${dotsHtml}
+                </div>
+                <button id="nextBtn" class="slider-btn" onclick="app.slideNext()">→</button>
+              </div>
+
+              <!-- Exams Section -->
+              <div class="glass-card" style="margin-top: 4rem; background: linear-gradient(135deg, rgba(16, 185, 129, 0.05), rgba(16, 185, 129, 0.1)); border-color: rgba(16, 185, 129, 0.2); padding: 3rem; border-radius: 20px; text-align: center;">
+                <h3 style="color: #10b981; margin-bottom: 0.5rem; font-size: 2rem;">📝 Crucial Entrance Exams</h3>
+                <p style="color: var(--text-muted); margin-bottom: 2.5rem;">Mark your calendars for these important registration and exam windows.</p>
+                
+                <div style="display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center;">
+                  ${data.exams.map(e => `
+                    <div style="background: white; padding: 1.5rem; border-radius: 20px; border: 1px solid rgba(16, 185, 129, 0.1); box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05); min-width: 250px; flex: 1; max-width: 300px; transition: transform 0.3s ease;">
+                      <div style="font-weight: 800; font-size: 1.1rem; color: #065f46; margin-bottom: 1rem; border-bottom: 1px dashed rgba(16, 185, 129, 0.2); padding-bottom: 0.5rem;">${e.name}</div>
+                      <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.9rem;">
+                        <span style="color: var(--text-muted);">Registration:</span>
+                        <span style="font-weight: 600; color: #059669;">${e.reg}</span>
+                      </div>
+                      <div style="display: flex; justify-content: space-between; font-size: 0.9rem;">
+                        <span style="color: var(--text-muted);">Exam Date:</span>
+                        <span style="font-weight: 600; color: #d97706;">${e.exam}</span>
+                      </div>
+                    </div>
+                  `).join('')}
+                </div>
+              </div>
+            </div>`;
+
+          setTimeout(() => this.updateSlider(), 100);
+        } catch (e) {
+          console.error("Error fetching evaluation results:", e);
+          container.innerHTML = '<div style="color:red; padding:2rem;">Failed to fetch results from backend. Please ensure the server is running.</div>';
+        }
+      },
+
+      searchDegree: async function () {
+        const query = document.getElementById('dictionary-search').value.trim();
+        if (!query) return;
+
+        const resultsContainer = document.getElementById('dictionary-results');
+        resultsContainer.innerHTML = '<div style="text-align:center; padding:4rem;"><div class="loader"></div><p>Searching...</p></div>';
+
+        try {
+          const resp = await fetch(`http://localhost:8000/api/search-degree?q=${encodeURIComponent(query)}`);
+          const data = await resp.json();
+
+          if (data.results.length === 0) {
+            resultsContainer.innerHTML = `
+              <div style="text-align: center; padding: 4rem;" class="glass-card">
+                <p style="font-size: 1.2rem; color: var(--text-muted);">No results found for "${query}". Try a different keyword.</p>
+              </div>`;
+            return;
+          }
+
+          resultsContainer.innerHTML = data.results.map(res => {
+            let jargonHtml = '';
+            let entry = res.jargon.trim();
+            if (entry.startsWith('- ')) entry = entry.substring(2);
+
+            const parts = entry.split(':');
+            if (parts.length >= 2) {
+              const term = parts[0].replace(/\*\*/g, '').trim();
+              const desc = parts.slice(1).join(':').trim();
+              jargonHtml = `
+                <div style="padding: 1.5rem; border-radius: 15px; background: rgba(79, 70, 229, 0.03); border-left: 4px solid var(--primary);">
+                  <div style="font-weight: 800; color: var(--primary); font-size: 1.1rem; margin-bottom: 0.5rem;">${term}</div>
+                  <div style="color: var(--text-main); line-height: 1.7;">${desc}</div>
+                </div>`;
+            } else {
+              jargonHtml = `<div style="padding: 1rem;">${entry}</div>`;
+            }
+
+            return `
+              <div class="glass-card fade-in" style="margin-bottom: 2rem; padding: 2.5rem;">
+                <h2 style="font-size: 1.8rem; margin-bottom: 1.2rem; display: flex; align-items: center; gap: 1rem;">
+                  <span style="background: var(--primary); color: white; padding: 0.4rem 0.8rem; border-radius: 10px; font-size: 1rem;">Career</span>
+                  ${res.career}
+                </h2>
+                ${jargonHtml}
+              </div>`;
+          }).join('');
+
+        } catch (e) {
+          console.error("Search Error:", e);
+          resultsContainer.innerHTML = '<div style="color:red; padding:2rem;">Error connecting to the dictionary server.</div>';
+        }
+      },
+
+      loadPivotCareers: async function () {
+        const select = document.getElementById('pivot-target-select');
+        if (select.children.length > 1) return; // Already loaded
+
+        try {
+          const resp = await fetch('http://localhost:8000/api/pivot/careers');
+          const data = await resp.json();
+          data.careers.sort().forEach(c => {
+            const opt = document.createElement('option');
+            opt.value = c;
+            opt.innerText = c;
+            select.appendChild(opt);
+          });
+        } catch (e) {
+          console.error("Error loading pivot careers:", e);
+        }
+      },
+
+      calculatePivot: async function () {
+        const target = document.getElementById('pivot-target-select').value;
+        if (!target) {
+          alert("Please select a target career.");
+          return;
+        }
+
+        if (!this.state.lastResult) {
+          alert("Please complete the assessment first so we can compare your profile!");
+          this.showPage('assessment');
+          return;
+        }
+
+        try {
+          const resp = await fetch('http://localhost:8000/api/pivot/calculate', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              target_career: target,
+              user_scores: this.state.lastResult.percentages || {}
+            })
+          });
+          const data = await resp.json();
+
+          document.getElementById('pivot-empty-state').classList.add('hidden');
+          document.getElementById('pivot-results').classList.remove('hidden');
+          document.getElementById('pivot-title').innerHTML = `
+            Target Career: ${target} <br>
+            <span style="font-size: 0.9rem; font-weight: 500; color: var(--text-muted);">
+              Current Profile Baseline: <strong>${data.user_top_trait}</strong>
+            </span>
+          `;
+
+          const grid = document.getElementById('pivot-grid');
+          grid.innerHTML = data.analysis.map(s => {
+            let badgeStyle = '';
+            let statusLabel = s.status;
+
+            if (s.status === 'Hot') {
+              badgeStyle = 'background: #fee2e2; color: #ef4444; border: 1px solid #fecaca;'; // Reddish for Hot
+              statusLabel = '🔥 Hot (Possessed)';
+            } else if (s.status === 'Warm') {
+              badgeStyle = 'background: #fef3c7; color: #d97706; border: 1px solid #fde68a;'; // Yellowish for Warm
+              statusLabel = '⚡ Warm (Upskilling)';
+            } else if (s.status === 'Cold') {
+              badgeStyle = 'background: #dbeafe; color: #3b82f6; border: 1px solid #bfdbfe;'; // Bluish for Cold
+              statusLabel = '❄️ Cold (Gap)';
+            }
+
+            return `
+              <div class="glass-card" style="padding: 1.5rem; border: 1px solid var(--border); transition: transform 0.3s ease;">
+                <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
+                  <h4 style="font-size: 1.1rem; margin: 0;">${s.skill}</h4>
+                  <span style="padding: 0.3rem 0.8rem; border-radius: 50px; font-size: 0.75rem; font-weight: 700; ${badgeStyle}">${statusLabel}</span>
+                </div>
+                
+                <div style="margin-bottom: 0.8rem;">
+                  <div style="display: flex; justify-content: space-between; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 0.4rem;">
+                    <span>Gap Analysis:</span>
+                    <span style="font-weight: 600;">${Math.round(s.delta * 100)}% Gap</span>
+                  </div>
+                  <div style="height: 8px; background: var(--border); border-radius: 4px; overflow: hidden;">
+                    <div style="height: 100%; width: ${s.user * 100}%; background: var(--primary);"></div>
+                    <div style="height: 100%; width: ${s.delta * 100}%; background: ${s.color === 'red' ? '#ef4444' : s.color === 'orange' ? '#f59e0b' : '#3b82f6'}; opacity: 0.3;"></div>
+                  </div>
+                </div>
+                
+                <div style="display: flex; justify-content: space-between; font-size: 0.8rem; opacity: 0.8;">
+                  <span>You: ${Math.round(s.user * 100)}%</span>
+                  <span>Target: ${Math.round(s.target * 100)}%</span>
+                </div>
+              </div>`;
+          }).join('');
+
+
+        } catch (e) {
+          console.error("Pivot Calculation Error:", e);
+        }
+      },
+
+      downloadResult: function () {
+        if (!this.state.lastResult) {
+          alert("Please complete the assessment first!");
+          return;
+        }
+        const data = this.state.lastResult;
+        let combinedText = '';
+        data.combined_recommendations.forEach(rec => {
+          combinedText += `\nCOURSE: ${rec.course}\n`;
+          combinedText += `Colleges:\n${rec.colleges.map(c => `- ${c.name} (${c.url})`).join('\n')}\n`;
+          combinedText += `Career Paths: ${rec.careers.join(', ')}\n`;
+        });
+
+        const text = `LUMINAV CAREER REPORT
+------------------------
+-------------------------
+User Profile: ${this.state.stream} (${this.state.marks}%)
+Top Trait: ${data.trait} (${data.match_percentage}% Match)
+Summary: ${data.traits_desc}
+Values: ${data.values.join(', ')}
+
+PERSONALIZED ROADMAPS:
+${combinedText}
+
+Key Exams & Dates:
+${data.exams.map(e => `- ${e.name} | Reg: ${e.reg} | Date: ${e.exam}`).join('\n')}
+
+Generated on: ${new Date().toLocaleDateString()}
+Generated by LuminaV Advisor Agent`;
+
+        const blob = new Blob([text], { type: 'text/plain' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'My_Career_Roadmap.txt';
+        a.click();
+      },
+
+      // --- CHATBOT FUNCTIONS ---
+      chatbot: {
+        currentCareer: null,
+        yearsAhead: 5,
+        conversationHistory: [],
+        isLoading: false
+      },
+
+      loadCareersForChatbot: async function () {
+        const container = document.getElementById('career-buttons-container');
+        
+        try {
+          const resp = await fetch('http://localhost:8000/api/chatbot/careers');
+          const data = await resp.json();
+          
+          container.innerHTML = data.careers.map(career => `
+            <div class="glass-card" style="padding: 1.5rem; cursor: pointer; transition: all 0.3s ease;" 
+              onclick="app.selectCareersForChat('${career}')"
+              onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 20px 50px -10px rgba(0,0,0,0.12)'"
+              onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='var(--card-shadow)'">
+              <h3 style="margin-bottom: 0.5rem; color: var(--primary);">👤 ${career}</h3>
+              <p style="color: var(--text-muted); font-size: 0.9rem; margin: 0;">Click to chat with your future self</p>
+            </div>
+          `).join('');
+        } catch (e) {
+          console.error("Error loading careers:", e);
+          container.innerHTML = '<div style="text-align: center; color: red; grid-column: 1 / -1;">Error loading careers</div>';
+        }
+      },
+
+      selectCareersForChat: async function (career) {
+        this.chatbot.currentCareer = career;
+        this.chatbot.conversationHistory = [];
+        
+        // Hide career selection, show chat interface
+        document.getElementById('chatbot-career-selection').classList.add('hidden');
+        document.getElementById('chatbot-interface').classList.remove('hidden');
+        
+        // Set career info
+        document.getElementById('chat-career-title').innerText = career;
+        document.getElementById('chat-career-subtitle').innerText = 'Speaking to your future self 5 years ahead';
+        
+        // Clear messages
+        document.getElementById('chat-messages').innerHTML = '';
+        
+        // Add initial greeting from future self
+        try {
+          const resp = await fetch('http://localhost:8000/api/chatbot/init', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              career: career,
+              years_ahead: this.chatbot.yearsAhead
+            })
+          });
+          const data = await resp.json();
+          
+          // Add greeting message
+          this.addChatMessage('assistant', data.greeting);
+        } catch (e) {
+          console.error("Error initializing chat:", e);
+          this.addChatMessage('assistant', `Hi! I'm you, 5 years from now, working as a ${career}. How can I help you today?`);
+        }
+      },
+
+      sendChatMessage: async function () {
+        const input = document.getElementById('chat-input');
+        const message = input.value.trim();
+        
+        if (!message || this.chatbot.isLoading) return;
+        
+        // Add user message to display
+        this.addChatMessage('user', message);
+        input.value = '';
+        
+        // Add to history
+        this.chatbot.conversationHistory.push({
+          role: 'user',
+          content: message
+        });
+        
+        // Set loading state
+        this.chatbot.isLoading = true;
+        
+        try {
+          const resp = await fetch('http://localhost:8000/api/chatbot/chat', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              career: this.chatbot.currentCareer,
+              years_ahead: this.chatbot.yearsAhead,
+              message: message,
+              conversation_history: this.chatbot.conversationHistory
+            })
+          });
+          
+          const data = await resp.json();
+          
+          // Add assistant response
+          this.addChatMessage('assistant', data.response);
+          
+          // Add to history
+          this.chatbot.conversationHistory.push({
+            role: 'assistant',
+            content: data.response
+          });
+        } catch (e) {
+          console.error("Error sending message:", e);
+          this.addChatMessage('assistant', 'Sorry, I encountered an error. Please try again.');
+        } finally {
+          this.chatbot.isLoading = false;
+        }
+      },
+
+      addChatMessage: function (role, content) {
+        const messagesContainer = document.getElementById('chat-messages');
+        
+        const messageEl = document.createElement('div');
+        messageEl.style.display = 'flex';
+        messageEl.style.justifyContent = role === 'user' ? 'flex-end' : 'flex-start';
+        messageEl.style.gap = '0.5rem';
+        
+        const bubble = document.createElement('div');
+        bubble.style.maxWidth = '70%';
+        bubble.style.padding = '1rem';
+        bubble.style.borderRadius = '12px';
+        bubble.style.wordWrap = 'break-word';
+        bubble.style.lineHeight = '1.5';
+        
+        if (role === 'user') {
+          bubble.style.background = 'var(--primary)';
+          bubble.style.color = 'white';
+        } else {
+          bubble.style.background = 'rgba(0,0,0,0.05)';
+          bubble.style.color = 'var(--text-main)';
+          bubble.style.border = '1px solid var(--border)';
+        }
+        
+        bubble.innerText = content;
+        messageEl.appendChild(bubble);
+        messagesContainer.appendChild(messageEl);
+        
+        // Scroll to bottom
+        messagesContainer.scrollTop = messagesContainer.scrollHeight;
+      },
+
+      backToCareers: function () {
+        document.getElementById('chatbot-interface').classList.add('hidden');
+        document.getElementById('chatbot-career-selection').classList.remove('hidden');
+        this.chatbot.currentCareer = null;
+        this.chatbot.conversationHistory = [];
+      },
+
+    };
+
+    app.init();
+  </script>
+
+
+
+
+</body>
+
+</html>
